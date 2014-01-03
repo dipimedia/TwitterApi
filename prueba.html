@@ -1,0 +1,25 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Prueba para pedirmesnajes privados</title>
+		<script src="jquery.js"></script>
+		<script>
+			$(document).on('ready',function(){
+
+				$('#boton').on('click',function(){
+
+					$.get('api.php',function (data){
+						console.log(data);
+					});
+
+				})
+
+			});
+		</script>
+	</head>
+	<body>
+		<button id="boton">Pedir</button>
+		<div id="respuesta"></div>
+	</body>
+	</html>	
