@@ -15,8 +15,8 @@ function status_twitter($noticia,$nombre) {
   require('twitter/twitteroauth.php'); // Ruta donde tenemos en nuestro servidor la librería de Abraham.
   
   define('_CONSUMER_KEY','GSjEfv0ojs3Kj8TZVsQuw'); // Sustituye el segundo parámetro por tu Consumer key.
-  define('_CONSUMER_SECRET','X8HDTUTENr7CzPkcv01WEQw5uSOvadzLvcN00eiJg'); // Sustituye el segundo parámetro por tu Consumer secret.
-  define('_OAUTH_TOKEN','739529196-e1wOYlV0ddLrizN4ULQr5b9BAUPEACFJ21YI9QzT'); // Sustituye el segundo parámetro por tu OAuth Token.
+  define('_CONSUMER_SECRET','X8HDTUTENr7CzPkcv01WEQw5uSOvadzLvcN00ei39529196-e1wOYlV0ddLrizN4ULQr5b9BAUPEACFJ21YI9QzTJg'); // Sustituye el segundo parámetro por tu Consumer secret.
+  define('_OAUTH_TOKEN','7'); // Sustituye el segundo parámetro por tu OAuth Token.
   define('_OAUTH_TOKEN_SECRET','17rSBLI42c67nHqDKEt9tuykuffCVsjraFK0bKF2Bulia'); // Sustituye el segundo parámetro por tu OAuth Token Secret.
   
   // Función para acortar URL con bit.ly . Primero debemos registrarnos en http://bit.ly para obtener clave api y usuario
@@ -39,9 +39,11 @@ function status_twitter($noticia,$nombre) {
     return $connection;
   }
   $connection = getConnectionWithAccessToken();
-  //$twitter = $connection->post('statuses/update', array('status' => $noticia));  
-  $twitter = $connection->post('direct_messages/new', array('screen_name' => $nombre,'text' => $noticia));
-  return $noticia;  
+  //$twitter = $connection->post('statuses/update', array('status' => $noticia));  //Sirve para publicar en twitter
+  //$twitter = $connection->post('direct_messages/new', array('screen_name' => $nombre,'text' => $noticia)); //Enviar mensaje Privado
+  $twitter = $connection->get('direct_messages');
+
+  return $twitter;  
 }
 
 
@@ -62,7 +64,8 @@ if(isset($_POST['noticia'],$_POST['nombre'])) {
 
    // Llamamos a la función para enviar el mensaje y acortar la url larga
     $elres = status_twitter($_POST['noticia'],$_POST['nombre']);
-    $txtRes = toLink($elres);
+    //$txtRes = toLink($elres);
+
 } 
 
    
@@ -139,7 +142,7 @@ if(isset($_POST['noticia'],$_POST['nombre'])) {
 <br />
 <?php
 if(isset($_POST['noticia'])) {      
-   echo "Tweet Enviado Exitosamente<br />\n<br />\n<b>" . $txtRes . "</b>\n<br />";
+   echo "Respuesta<br />\n<br />\n<b>" . $elres . "</b>\n<br />";
 }else{
     echo "No Hay Tweets por enviar\n<br />";   
 }
