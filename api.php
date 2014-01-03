@@ -18,6 +18,6 @@ require('twitter/twitteroauth.php'); // Ruta donde tenemos en nuestro servidor l
   $connection = getConnectionWithAccessToken();
   $twitter = $connection->get('direct_messages', array('count' => '5'));
 
-  echo json_decode($twitter);
+  echo json_encode($twitter);
 
 ?>
