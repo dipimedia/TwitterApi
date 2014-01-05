@@ -3,23 +3,40 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Prueba para pedirmesnajes privados</title>
-		<script src="jquery.js"></script>
-		<script>
-			$(document).on('ready',function(){
-
-				$('#boton').on('click',function(){
-
-					$.get('api.php',function (data){
-						console.log(data);
-					});
-
-				})
-
-			});
-		</script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/main.js"></script>
 	</head>
 	<body>
-		<button id="boton">Pedir</button>
-		<div id="respuesta"></div>
+
+		<h1>Prueba de Api Twitter</h1>
+
+		<div class="row">
+		  <div class="col-md-2 col-md-offset-2">Menu</div>
+		  <div class="col-md-6">
+
+		  	<h2>Mensjaes Privados</h2>
+
+		  	<button id="boton" class="btn btn-primary">Mostrar Mensajes Privados</button>
+		  	</br>
+		  	</br>
+				<div id="respuesta">
+					
+					<div class="list-group">
+					  <a href="#" class="list-group-item">
+					  	<img src="..." alt="..." class="img-circle">
+					    <h4 class="list-group-item-heading">@joseluis</h4>
+					    <p class="list-group-item-text">
+					    	Respuesta de mensaje privado
+					    </p>
+					  </a>
+					</div>
+
+				</div>
+
+		  </div>
+		</div>
+		
 	</body>
 	</html>	
