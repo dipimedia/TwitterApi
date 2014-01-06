@@ -22,16 +22,17 @@
 				<div class="panel">
 
 			      <ul id="myTab" class="nav nav-tabs">
-			        <li class="active"><a id="enviatweet" href="#tweet" data-toggle="tab">Tweets</a></li>
-			        <li class=""><a id="mensajes" href="#dm" data-toggle="tab">Mensajes Privados</a></li>
-			        <li class=""><a id="nuevomensajes" href="#ndm" data-toggle="tab">Nuevo Mensaje</a></li>
+			        <li class="active"><a id="" href="#tweet" data-toggle="tab">Tweets</a></li>
+			        <li class=""><a id="" href="#follow" data-toggle="tab">Seguidores</a></li>
+			        <li class=""><a id="" href="#dm" data-toggle="tab">Mensajes Privados</a></li>
+			        <li class=""><a id="" href="#ndm" data-toggle="tab">Nuevo Mensaje</a></li>
 			      </ul>
 			      <div id="myTabContent" class="tab-content">
 
 			        <div class="tab-pane fade active in" id="tweet">
 						<h2>Enviar tweet</h2>
-				        <textarea class="form-control" rows="3"></textarea>
-						<button id="twettea" class="btn btn-primary">Enviar Tweet</button>
+				        <textarea id="noticia" class="form-control" rows="3"></textarea>
+						<button type="button" id="twettea" data-loading-text="Enviando..." class="btn btn-primary">Enviar Tweet</button>
 						</br>
 						</br>
 						<div>
@@ -43,7 +44,7 @@
 
 			        <div class="tab-pane fade" id="dm">
 			          	<h2>Mensjaes Privados</h2>
-					  	<button id="boton" class="btn btn-primary">Mostrar Mensajes Privados</button>
+					  	<button type="button" id="boton" data-loading-text="Cargando..." class="btn btn-primary">Mostrar Mensajes Privados</button>
 					  	</br>
 					  	</br>
 						<div id="respuesta" class="list-group"></div>
@@ -54,11 +55,20 @@
 
 			          	<div class="input-group">
 						  <span class="input-group-addon">@</span>
-						  <input type="text" class="form-control" placeholder="Nombre de Usuario">
+						  <input type="text" id="usuario" class="form-control" placeholder="Nombre de Usuario">
 						</div>
 						</br>
-					  	<textarea class="form-control" rows="3"></textarea>
-					  	<button id="twettea" class="btn btn-primary">Enviar Mensaje</button>
+						</br>
+					  	<textarea id="mensaje" class="form-control" rows="3"></textarea>
+					  	<button type="button" data-loading-text="Enviando..." id="enviaMensaje" class="btn btn-primary">Enviar Mensaje</button>
+			        </div>
+
+			        <div class="tab-pane fade" id="follow">
+			          	<h2>Seguidores</h2>
+					  	<button type="button" id="seguidores" data-loading-text="Cargando..." class="btn btn-primary">Mostrar Seguidores</button>
+					  	</br>
+					  	</br>
+						<div id="lista" class="list-group"></div>
 			        </div>
 
 			      </div>
