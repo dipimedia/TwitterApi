@@ -1,12 +1,22 @@
 h1 {
 
-	text-align: center;
+	text-align: left;
 }
 
 .img-circle,.list-group-item-heading{
 
 	display: inline-block;
-	vertical-align: top;
+	vertical-align: middle;
+}
+
+.list-group-item-heading{
+
+	margin-left: 1em;
+}
+
+.list-group-item-text{
+
+	padding: 0.6em;
 }
 
 

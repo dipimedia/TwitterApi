@@ -18,6 +18,25 @@ require('twitter/twitteroauth.php'); // Ruta donde tenemos en nuestro servidor l
   $connection = getConnectionWithAccessToken();
   $twitter = $connection->get('direct_messages');
 
-  echo json_encode($twitter);
+  //echo json_encode($twitter);
+
+  $resultado = array();
+  $general = array();
+  $i = 0;
+
+  foreach ($twitter as $tweet) {
+    
+    $resultado['id'] = $tweet->id;
+    $resultado['texto'] = $tweet->text;
+    $resultado['de'] = $tweet->sender->screen_name;
+    $resultado['avatar'] = $tweet->sender->profile_image_url;
+    $resultado['fecha'] = $tweet->created_at;
+
+    $general[$i] = $resultado;
+    $i++;
+
+  }
+
+  echo json_encode($general);
 
 ?>
