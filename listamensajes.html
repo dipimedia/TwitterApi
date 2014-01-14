@@ -1,0 +1,8 @@
+<h2>{{tituloLM}}</h2>
+</br>
+<div id="respuesta" class="list-group">
+<a href="#/mensaje/{{mensaje.de}}" class="list-group-item" ng-repeat="mensaje in mensajes">
+<img src="{{mensaje.avatar}}" alt="@{{mensaje.de}}" class="img-thumbnail">
+<h4 class="list-group-item-heading">@<span class="user">{{mensaje.de}}</span></h4>
+<p class="list-group-item-text">{{mensaje.texto}}</p>
+</div>

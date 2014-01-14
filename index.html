@@ -1,5 +1,5 @@
 <!doctype html>
-	<html lang="en">
+	<html ng-app="twitter" lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title>Api Twetter</title>
@@ -8,81 +8,41 @@
 	</head>
 	<body>
 	<div class="container">
-	
-		<h1>Prueba de Api Twitter</h1>
-
+		<h1>{{titulo}}</h1>
 		<div class="row">
 
 		  <div class="col-md-2">
-		  		<h2>@medicoweb</h2>
+		  		<h2>{{cuenta}}</h2>
 		  </div>
 
 		  <div class="col-md-6">
 
-				<div class="panel">
+			<div class="panel">
 
 			      <ul id="myTab" class="nav nav-tabs">
-			        <li class="active"><a id="" href="#tweet" data-toggle="tab">Tweets</a></li>
-			        <li class=""><a id="" href="#follow" data-toggle="tab">Seguidores</a></li>
-			        <li class=""><a id="" href="#dm" data-toggle="tab">Mensajes Privados</a></li>
-			        <li class=""><a id="" href="#ndm" data-toggle="tab">Nuevo Mensaje</a></li>
+			        <li id="link1"><a  href="#/">Tweets</a></li>
+			        <li id="link2"><a  href="#/seguidores">Seguidores</a></li>
+			        <li id="link3"><a  href="#/listamensajes">Mensajes Privados</a></li>
+			        <li id="link4"><a  href="#/mensaje">Nuevo Mensaje</a></li>
 			      </ul>
-			      <div id="myTabContent" class="tab-content">
 
-			        <div class="tab-pane fade active in" id="tweet">
-						<h2>Enviar tweet</h2>
-				        <textarea id="noticia" class="form-control" rows="3"></textarea>
-						<button type="button" id="twettea" data-loading-text="Enviando..." class="btn btn-primary">Enviar Tweet</button>
-						</br>
-						</br>
-						<div>
-							<a class="twitter-timeline" href="https://twitter.com/medicoweb" data-widget-id="420265503404208128">Tweets por @medicoweb</a>
-							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-							</script>
-						</div>
-			        </div>
-
-			        <div class="tab-pane fade" id="dm">
-			          	<h2>Mensjaes Privados</h2>
-					  	<button type="button" id="boton" data-loading-text="Cargando..." class="btn btn-primary">Mostrar Mensajes Privados</button>
-					  	</br>
-					  	</br>
-						<div id="respuesta" class="list-group"></div>
-			        </div>
-
-			        <div class="tab-pane fade" id="ndm">
-			          	<h2>Nuevo Mensaje Privado</h2>
-
-			          	<div class="input-group">
-						  <span class="input-group-addon">@</span>
-						  <input type="text" id="usuario" class="form-control" placeholder="Nombre de Usuario">
-						</div>
-						</br>
-					  	<textarea id="mensaje" class="form-control" rows="3"></textarea>
-					  	<button type="button" data-loading-text="Enviando..." id="enviaMensaje" class="btn btn-primary">Enviar Mensaje</button>
-			        </div>
-
-			        <div class="tab-pane fade" id="follow">
-			          	<h2>Seguidores</h2>
-					  	<button type="button" id="seguidores" data-loading-text="Cargando..." class="btn btn-primary">Mostrar Seguidores</button>
-					  	</br>
-					  	</br>
-						<div id="lista" class="list-group"></div>
-			        </div>
-
-			      </div>
+			    <div ng-view>
 
 			    </div>
 
-			    <div class="detalles">
-			    	
-			    </div>
+			</div>
 
-		  </div >
+		</div >
 
 		</div>
+
 	</div>	
-		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-resource.min.js"></script>
+		<script src="lib/angular-route.js"></script>
+		<script src="lib/app.js"></script>
+		<script src="lib/controller.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery.textareaCounter.plugin.js" type="text/javascript"></script>
 		<script src="js/main.js"></script>
