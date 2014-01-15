@@ -82,6 +82,25 @@ require('twitter/twitteroauth.php'); // Ruta donde tenemos en nuestro servidor l
       echo json_encode($general);
 
   }
+
+  if ($accion == 'amigos') {
+    
+    $twitter = $connection->get('friends/list');
+    $i = 0;
+
+      foreach ($twitter->users as $user) {
+        
+        $resultado['usuario'] = $user->screen_name;
+        $resultado['nombre'] = $user->name;
+        $resultado['avatar'] = $user->profile_image_url;
+        
+        $general[$i] = $resultado;
+        $i++;
+
+      }
+    echo json_encode($general);
+
+  }
   
 
 ?>

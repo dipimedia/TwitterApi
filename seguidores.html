@@ -1,12 +1,28 @@
-<h2>{{tituloS}}</h2>
-</br>
-</br>
-<div id="lista" class="list-group">
-	<a href="#/mensaje/{{seguidor.nombre}}"  class="list-group-item" ng-repeat="seguidor in seguidores">
-	<img src="{{seguidor.avatar}}" alt="@{{seguidor.usuario}}" class="img-thumbnail">
-	<h4 class="list-group-item-heading">@<span class="user">{{seguidor.usuario}}</span></h4>
-	<p class="list-group-item-text">{{seguidor.nombre}}</p></a>
+<div class="row">
+	<div class="col-md-6">
+		<h2>{{tituloS}}</h2>
+		</br>
+		</br>
+		<div id="lista" class="list-group">
+			<a href="#/mensaje/{{seguidor.usuario}}"  class="list-group-item" ng-repeat="seguidor in seguidores">
+			<img src="{{seguidor.avatar}}" alt="@{{seguidor.usuario}}" class="img-thumbnail">
+			<h4 class="list-group-item-heading">@<span class="user">{{seguidor.usuario}}</span></h4>
+			<p class="list-group-item-text">{{seguidor.nombre}}</p></a>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<h2>{{tituloF}}</h2>
+		</br>
+		</br>
+		<div id="lista" class="list-group">
+			<a href="#/mensaje/{{amigo.usuario}}"  class="list-group-item" ng-repeat="amigo in amigos">
+			<img src="{{amigo.avatar}}" alt="@{{amigo.usuario}}" class="img-thumbnail">
+			<h4 class="list-group-item-heading">@<span class="user">{{amigo.usuario}}</span></h4>
+			<p class="list-group-item-text">{{amigo.nombre}}</p></a>
+		</div>
+	</div>
 </div>
+
 <script>
 	$('#link2').tab('show');
 </script>

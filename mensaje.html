@@ -5,7 +5,15 @@
 </div>
 </br>
 <textarea id="mensaje" ng-model="mensaje" class="form-control" rows="3"></textarea>
-<button type="button" data-loading-text="Enviando..." id="enviaMensaje" class="btn btn-primary">Enviar Mensaje</button>
+<button type="button" ng-click="enviamensaje()" id="enviaMensaje" class="btn btn-primary">Enviar Mensaje</button>
 <script>
-	$('#link4').tab('show');
+	var options = {
+						'maxCharacterSize': 140,
+						'originalStyle': 'originalTextareaInfo',
+						'warningStyle' : 'warningTextareaInfo',
+						'warningNumber': 100,
+						'displayFormat' : '#input/#max'
+				};
+
+	$('#mensaje').textareaCount(options);
 </script>
