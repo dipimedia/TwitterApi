@@ -1,7 +1,14 @@
 <!doctype html>
+
+	<!--[if IE 8]>
+	<html class="no-js lt-ie9" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="myApp"> 
+	<![endif]-->
+	<!--[if gt IE 8]><!--> 
 	<html ng-app="twitter" lang="en">
+	<!--<![endif]-->
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<title>Api Twetter</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -15,7 +22,7 @@
 		  		<h2>{{cuenta}}</h2>
 		  </div>
 
-		  <div class="col-md-6">
+		  <div class="col-md-10">
 
 			<div class="panel">
 
@@ -24,7 +31,8 @@
 			        <li id="link2"><a  href="#/seguidores">Seguidores</a></li>
 			        <li id="link3"><a  href="#/listamensajes">Mensajes Privados</a></li>
 			        <li id="link4"><a  href="#/mensaje">Nuevo Mensaje</a></li>
-			        <li id="link4"><a  href="#/chat">Chat</a></li>
+			        <li id="link4"><a  href="#/chat">Chat<span ng-show="push > 0" class="label label-primary">{{push}}</span></a></li>
+			        <li id="link4"><a  href="#/sube">Subir Archivos</a></li>
 			      </ul>
 
 			    <div ng-view>
@@ -37,9 +45,14 @@
 
 		</div>
 
-	</div>	
+	</div>
+		<!--[if lt IE 9]>
+	      <script src="lib/json3.min.js"></script>
+	    <![endif]-->	
 		<script src="js/jquery.js"></script>
+		<script src="lib/angular-file-upload-shim.min.js"></script> 
 		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-file-upload.min.js"></script> 
 		<script src="lib/angular-resource.min.js"></script>
 		<script src="lib/angular-route.js"></script>
 		<!-- Firebase -->

@@ -4,6 +4,14 @@
 	<textarea ng-model="mensaje" class="form-control" rows="3" placeholder="Mensaje...."></textarea>
 	</br>
 	<button type="button" id="twettea" ng-click="enviaMsg()" class="btn btn-primary">Enviar</button>
+</br>
+</br>
+<div id="crumbs">
+	<ul>
+		<li><a href="#">Mensajes</a></li>
+	</ul>
+</div>
+</br>
 <ul class="list-group">
     <li class="list-group-item" ng-repeat="mensaje in mensajes" >{{mensaje.usuario}} - {{mensaje.mensaje}}</li>
 </ul>

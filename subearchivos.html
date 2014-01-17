@@ -1,0 +1,19 @@
+<h2>{{tituloS}}</h2>
+</br>
+</br>
+<label for="archivo">Sube el archivo deseado</label>
+<!--<input id="archivo" type="file" file-upload multiple/>-->
+<input type="file" ng-file-select="onFileSelect($files)" >
+<input type="file" ng-file-select="onFileSelect($files)" multiple>
+<div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="arrastra">Arrastra tus archivos aqui</div>
+
+<button ng-click="upload.abort()">Cancela</button>
+<div class="alert alert-danger" ng-show=" error != '' ">{{error}}</div>
+</br>
+</br>
+<button class="btn" ng-click="envia()">Subir</button>
+</br>
+</br>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="file in files">{{file.name}}</li>
+</ul>
