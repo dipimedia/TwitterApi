@@ -158,11 +158,11 @@ require('twitter/twitteroauth.php'); // Ruta donde tenemos en nuestro servidor l
 
       //$file_count = $_FILES['file'];
 
-      $tot = count($_FILES["file"]["name"]);
+      $tot = count($_FILES['file']['name']);
 
       echo $tot;
 
-      for ($i=0; $i < $tot; $i++) { 
+      for ($i=0; $i < 3; $i++) { 
 
             $tmp_name = $_FILES["file"]["tmp_name"][$i];
             $name = $_FILES["file"]["name"][$i];
