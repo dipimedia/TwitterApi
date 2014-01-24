@@ -129,6 +129,103 @@ require('twitter/twitteroauth.php'); // Ruta donde tenemos en nuestro servidor l
       }
 
   }
+
+  if ($accion == 'correo') {
+
+      $num = md5(time());
+      $nombre  = $_REQUEST["nombre"];
+      $mensaje  = $_REQUEST["mensaje"];
+
+      //MAIL BODY
+      $body = "
+      <html>
+      <head>
+      <title>Correo de Prueba</title>
+      </head>
+      <body style='background:#EEE; padding:30px;'>
+      <h2 style='color:#767676;'>Trabaja con nosotros</h2>";
+
+      $body .= "
+      <strong style='color:#0090C6;'>Nombre: </strong>
+      <span style='color:#767676;'>" . $nombre . "</span>
+      <br></br>";
+
+      $body .= "
+      <strong style='color:#0090C6;'>Mensaje: </strong>
+      <span style='color:#767676;'>" . $mensaje . "</span>";
+
+      $body .= "</body></html>";
+
+      //$file_count = $_FILES['file'];
+
+      $tot = count($_FILES["file"]["name"]);
+
+      echo $tot;
+
+      for ($i=0; $i < $tot; $i++) { 
+
+            $tmp_name = $_FILES["file"]["tmp_name"][$i];
+            $name = $_FILES["file"]["name"][$i];
+            echo("<b>Archivo </b> $key ");
+            echo("<br />");
+            echo("<b>el nombre original:</b> ");
+            echo($name);
+            echo("<br />");
+            echo("<b>el nombre temporal:</b> \n");
+            echo($tmp_name);
+            echo("<br />");  
+
+      }
+       
+       echo "hola";
+        /*$_name=$_FILES["file"]["name"];
+        $_type=$_FILES["file"]["type"];
+        $_size=$_FILES["file"]["size"];
+        $_temp=$_FILES["file"]["tmp_name"];*/
+
+      if( strcmp($_name, "") ) //FILES EXISTS
+      { 
+
+        $fp = fopen($_temp, "rb");
+        $file = fread($fp, $_size);
+        $file = chunk_split(base64_encode($file)); 
+
+        // MULTI-HEADERS Content-Type: multipart/mixed and Boundary is mandatory.
+        $headers = "From: Pagina de Prueba <hola@hola.com>\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/mixed; "; 
+        $headers .= "boundary=".$num."\r\n";
+        $headers .= "--".$num."\n"; 
+
+        // HTML HEADERS 
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $headers .= "Content-Transfer-Encoding: 8bit\r\n";
+        $headers .= "".$body."\n";
+        $headers .= "--".$num."\n"; 
+
+        // FILES HEADERS 
+        $headers .= "Content-Type:application/octet-stream "; 
+        $headers .= "name=\"".$_name."\"r\n";
+        $headers .= "Content-Transfer-Encoding: base64\r\n";
+        $headers .= "Content-Disposition: attachment; ";
+        $headers .= "filename=\"".$_name."\"\r\n\n";
+        $headers .= "".$file."\r\n";
+        $headers .= "--".$num."--"; 
+
+      }else { //FILES NO EXISTS
+
+        // HTML HEADERS
+        $headers = "From: GME \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $headers .= "Content-Transfer-Encoding: 8bit\r\n";
+      } 
+
+    // SEND MAIL
+    //mail("salcala@medicavial.com.mx", "Prueba" , $body, $headers);
+
+
+  }
   
 
 ?>

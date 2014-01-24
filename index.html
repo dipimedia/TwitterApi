@@ -1,33 +1,25 @@
 <!doctype html>
-
-	<!--[if IE 8]>
-	<html class="no-js lt-ie9" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="myApp"> 
-	<![endif]-->
-	<!--[if gt IE 8]><!--> 
-	<html ng-app="twitter" lang="en">
-	<!--<![endif]-->
+	<html id="ng-app" ng-app="twitter" lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>Api Twetter</title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!--[if IE 8]>
 	      <script src="lib/json3.min.js"></script>
-	    <![endif]-->	
-		<script src="js/jquery.js"  async></script>
-		<script src="lib/angular-file-upload-shim.min.js" async></script> 
-		<script src="lib/angular.min.js" async></script>
-		<script src="lib/angular-file-upload.min.js" async></script> 
-		<script src="lib/angular-resource.min.js" async></script>
-		<script src="lib/angular-route.js" async></script>
-		<!-- Firebase -->
-		<script src="https://cdn.firebase.com/v0/firebase.js" async></script>
-    	<script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js" async></script>
-		<script src="lib/app.js" async></script>
-		<script src="lib/controller.js" async></script>
-		<script src="js/bootstrap.min.js" async></script>
-		<script src="js/jquery.textareaCounter.plugin.js" async></script>
+	      <script>
+	        document.createElement('ng-include');
+	        document.createElement('ng-pluralize');
+	        document.createElement('ng-view');
+	 
+	        // Optionally these for CSS
+	        document.createElement('ng:include');
+	        document.createElement('ng:pluralize');
+	        document.createElement('ng:view');
+	      </script>
+	    <![endif]-->
 	</head>
 	<body>
 	<div class="container">
@@ -47,11 +39,12 @@
 			        <li id="link2"><a  href="#/seguidores">Seguidores</a></li>
 			        <li id="link3"><a  href="#/listamensajes">Mensajes Privados</a></li>
 			        <li id="link4"><a  href="#/mensaje">Nuevo Mensaje</a></li>
-			        <li id="link4"><a  href="#/chat">Chat<span ng-show="push > 0" class="label label-primary">{{push}}</span></a></li>
-			        <li id="link4"><a  href="#/sube">Subir Archivos</a></li>
+			        <li id="link5"><a  href="#/chat">Chat<span ng-show="push > 0" class="label label-primary">{{push}}</span></a></li>
+			        <li id="link6"><a  href="#/sube">Subir Archivos</a></li>
+			        <li id="link7"><a  href="#/correo">Mandar Correo</a></li>
 			      </ul>
 
-			    <div ng-view>
+			    <div class="ng-view">
 
 			    </div>
 
@@ -62,6 +55,19 @@
 		</div>
 
 	</div>
-		
+			
+		<script src="js/jquery.js"  ></script>
+		<script src="lib/angular-file-upload-shim.min.js" ></script> 
+		<script src="lib/angular.min.js" ></script>
+		<script src="lib/angular-file-upload.min.js" ></script> 
+		<script src="lib/angular-resource.min.js" ></script>
+		<script src="lib/angular-route.js" ></script>
+		<!-- Firebase -->
+		<script src="https://cdn.firebase.com/v0/firebase.js" ></script>
+    	<script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js" ></script>
+		<script src="lib/app.js" ></script>
+		<script src="lib/controller.js" ></script>
+		<script src="js/bootstrap.min.js" ></script>
+		<script src="js/jquery.textareaCounter.plugin.js" ></script>
 	</body>
 	</html>	

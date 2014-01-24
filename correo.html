@@ -1,0 +1,20 @@
+<h2>{{tituloC}}</h2>
+</br>
+</br>
+<input type="text" class="form-control"  ng-model="nombre" placeholder="Nombre"  required/>
+</br>
+</br>
+<textarea id="mensaje" ng-model="mensaje" class="form-control" rows="3" placeholder="Mensaje"></textarea>
+</br>
+</br>
+<label for="archivo">Sube el archivo deseado</label>
+<input id="archivo" type="file" file-upload multiple/>
+<div ng-show="dropSupported" class="drop-box" ng-file-drop="enviaCorreo($files);" ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="arrastra" file-upload>Arrastra tus archivos aqui</div>
+</br>
+</br>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="file in files">{{file.name}}</li>
+</ul>
+</br>
+</br>
+<button class="btn" ng-click="enviaCorreo()">Enviar</button>
