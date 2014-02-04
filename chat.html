@@ -1,9 +1,8 @@
 <h2>{{tituloCH}}</h2>
-	<input type="text" class="form-control"  ng-model="usuario" placeholder="Nombre"  required/>
+</br>
+	<textarea ng-model="mensaje" ng-keydown="presiona" class="form-control" rows="3" placeholder="Mensaje...."></textarea>
 	</br>
-	<textarea ng-model="mensaje" class="form-control" rows="3" placeholder="Mensaje...."></textarea>
-	</br>
-	<button type="button" id="twettea" ng-click="enviaMsg()" class="btn btn-primary">Enviar</button>
+	<button type="submit" id="twettea" ng-click="enviaMsg()" class="btn btn-primary">Enviar</button>
 </br>
 </br>
 <div id="crumbs">

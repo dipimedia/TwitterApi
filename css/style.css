@@ -37,6 +37,14 @@ h1 {
 	position: absolute; right: 0; top: 0; left: -5px;
 }
 
+#login{
+	
+	box-shadow: 0.5px 0.5px 20px rgba(0,0,0,0.5);
+	padding: 1em;
+	text-align: center;
+	width: 70%;
+}
+
 .drop-box {
 	background: #F8F8F8;
 	border: 5px dashed #DDD;

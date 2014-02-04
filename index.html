@@ -1,5 +1,5 @@
 <!doctype html>
-	<html id="ng-app" ng-app="twitter" lang="en">
+	<html id="ng-app" ng-app="twitter" lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
@@ -34,7 +34,7 @@
 
 			<div class="panel">
 
-			      <ul id="myTab" class="nav nav-tabs">
+			      <ul id="myTab" class="nav nav-tabs" ng-show=" username != '' ">
 			        <li id="link1"><a  href="#/">Tweets</a></li>
 			        <li id="link2"><a  href="#/seguidores">Seguidores</a></li>
 			        <li id="link3"><a  href="#/listamensajes">Mensajes Privados</a></li>
@@ -56,12 +56,13 @@
 
 	</div>
 			
-		<script src="js/jquery.js"  ></script>
+		<script src="js/jquery.js"></script>
 		<script src="lib/angular-file-upload-shim.min.js" ></script> 
 		<script src="lib/angular.min.js" ></script>
 		<script src="lib/angular-file-upload.min.js" ></script> 
 		<script src="lib/angular-resource.min.js" ></script>
 		<script src="lib/angular-route.js" ></script>
+		<script src="lib/cookies.js" ></script>
 		<!-- Firebase -->
 		<script src="https://cdn.firebase.com/v0/firebase.js" ></script>
     	<script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js" ></script>
