@@ -60,6 +60,12 @@ h1 {
 
 }
 
+.chart {
+		float:left;
+		width: 95%;
+		height:400px;
+}
+
 .img-circle,.list-group-item-heading{
 
 	display: inline-block;
@@ -75,6 +81,8 @@ h1 {
 
 	padding: 0.6em;
 }
+
+
 
 
 
