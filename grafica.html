@@ -1,27 +1,8 @@
 <div id="contenido">
+	
 
-	<h2>{{chartType}}</h2>
-
-		<select ng-model='chartType'>
-			<option value="pie">pie</option>
-			<option value="bar">bar</option>
-			<option value="line">line</option>
-			<option value="point">point</option>
-			<option value="area">area</option>
-		</select>
-	<div class="row">
-
-		<div class="col-md-6">
-			<div ac-chart="chartType" ac-data="data" ac-config="config" id='chart' class='chart'></div>
-		</div>
-		<div class="col-md-6">
-			<div ac-chart="chartType" ac-data="data1" ac-config="config1" id='chart' class='chart'></div>
-		</div>
-
-	</div>
-		
-	<div class="row">
-		<table class="table">
+	<div class="row" id="tabla">
+		<table class="table" >
 	      <thead>
 	        <tr>
 	          <th>#</th>
@@ -53,76 +34,104 @@
 	    </table>
 	</div>
 
+	<div id="chartdiv" style="width:100%; height:400px;"></div>
+	
 </div>
 
-<button class="btn-default" onclick="guardapdf()" >Exportar a PDF</button>
-
+<button onclick="imprSelec('contenido')">Imprimir</button>
+    
 <script type="text/javascript">
+	
+	var chartData = [{
+		"country": "USA",
+		"visits": 4252
+	}, {
+		"country": "China",
+		"visits": 1882
+	}, {
+		"country": "Japan",
+		"visits": 1809
+	}, {
+		"country": "Germany",
+		"visits": 1322
+	}, {
+		"country": "UK",
+		"visits": 1122
+	}, {
+		"country": "France",
+		"visits": 1114
+	}, {
+		"country": "India",
+		"visits": 984
+	}, {
+		"country": "Spain",
+		"visits": 711
+	}, {
+		"country": "Netherlands",
+		"visits": 665
+	}, {
+		"country": "Russia",
+		"visits": 580
+	}, {
+		"country": "South Korea",
+		"visits": 443
+	}, {
+		"country": "Canada",
+		"visits": 441
+	}, {
+		"country": "Brazil",
+		"visits": 395
+	}, {
+		"country": "Italy",
+		"visits": 386
+	}, {
+		"country": "Australia",
+		"visits": 384
+	}, {
+		"country": "Taiwan",
+		"visits": 338
+	}, {
+		"country": "Poland",
+		"visits": 328
+	}];
 
-function guardapdf(){
 
-	/*var pdf = new jsPDF('p','in','letter')
+	    var chart = new AmCharts.AmSerialChart();
+		chart.dataProvider = chartData;
+		chart.categoryField = "country";
 
-	// source can be HTML-formatted string, or a reference
-	// to an actual DOM element from which the text will be scraped.
-	, source = $('#contenido')
+		var graph = new AmCharts.AmGraph();
+		graph.valueField = "visits";
+		graph.type = "column";
+		chart.addGraph(graph);
 
-	// we support special element handlers. Register them with jQuery-style 
-	// ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-	// There is no support for any other type of selectors 
-	// (class, of compound) at this time.
-	, specialElementHandlers = {
-		// element with id of "bypass" - jQuery style selector
-		'#bypassme': function(element, renderer){
-			// true = "handled elsewhere, bypass text extraction"
-			return true
+		var categoryAxis = chart.categoryAxis;
+		categoryAxis.autoGridCount  = false;
+		categoryAxis.gridCount = chartData.length;
+		categoryAxis.gridPosition = "start";
+
+		categoryAxis.labelRotation = 90;
+
+		graph.fillAlphas = 0.8; 
+
+		chart.angle = 30;
+		chart.depth3D = 15;
+
+		graph.balloonText = "[[category]]: <b>[[value]]</b>";
+
+		chart.write('chartdiv');
+
+		function imprSelec(muestra){
+
+			var html = $('#tabla').html();
+			alert(html);
+			// var ficha=document.getElementById(muestra);
+			// var ventimp=window.open(' ','popimpr');
+			// ventimp.document.write(ficha.innerHTML);
+			// ventimp.document.close();
+			// ventimp.print();
+			// ventimp.close();
 		}
-	}
-
-	// all coords and widths are in jsPDF instance's declared units
-	// 'inches' in this case
-	pdf.fromHTML(
-		source // HTML string or DOM elem ref.
-		, 0.5 // x coord
-		, 0.5 // y coord
-		, {
-			'width':7.5 // max width of content on PDF
-			, 'elementHandlers': specialElementHandlers
-		}
-	)*/
-
-
-	var pdf = new jsPDF();
-
-	// We'll make our own renderer to skip this editor
-	var specialElementHandlers = {
-		'#editor': function(element, renderer){
-			return true;
-		}
-	};
-
-	// All units are in the set measurement for the document
-	// This can be changed to "pt" (points), "mm" (Default), "cm", "in"
-	pdf.fromHTML($('#contenido').get(0), 15, 15, {
-		'width': 170 ,
-		'elementHandlers': specialElementHandlers
-	});
-
-	//pdf.save('Test.pdf');
-	var out = pdf.output();
-	var url = 'data:application/pdf;base64,' + Base64.encode(out);
-	document.location.href = url;
-
-}
-
-function imprSelec(muestra){
-	var ficha=document.getElementById(muestra);
-	var ventimp=window.open(' ','popimpr');
-	ventimp.document.write(ficha.innerHTML);
-	ventimp.document.close();
-	ventimp.print();
-	ventimp.close();
-}
 
 </script>
 

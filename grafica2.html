@@ -1,0 +1,131 @@
+<div id="contenido">
+
+	<h2>{{chartType}}</h2>
+
+		<select ng-model='chartType'>
+			<option value="pie">pie</option>
+			<option value="bar">bar</option>
+			<option value="line">line</option>
+			<option value="point">point</option>
+			<option value="area">area</option>
+		</select>
+	<div class="row">
+
+		<div class="col-md-6">
+			<div ac-chart="chartType" ac-data="data" ac-config="config" id='chart' class='chart'></div>
+		</div>
+		<div class="col-md-6">
+			<div ac-chart="chartType" ac-data="data1" ac-config="config1" id='chart' class='chart'></div>
+		</div>
+
+	</div>
+		
+	<div class="row" id="tabla">
+		<table class="table" >
+	      <thead>
+	        <tr>
+	          <th>#</th>
+	          <th>First Name</th>
+	          <th>Last Name</th>
+	          <th>Username</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr>
+	          <td>1</td>
+	          <td>Mark</td>
+	          <td>Otto</td>
+	          <td>@mdo</td>
+	        </tr>
+	        <tr>
+	          <td>2</td>
+	          <td>Jacob</td>
+	          <td>Thornton</td>
+	          <td>@fat</td>
+	        </tr>
+	        <tr>
+	          <td>3</td>
+	          <td>Larry</td>
+	          <td>the Bird</td>
+	          <td>@twitter</td>
+	        </tr>
+	      </tbody>
+	    </table>
+	</div>
+
+</div>
+
+<button class="btn-default" onclick="guardapdf()">Exportar a PDF</button>
+    
+
+<script type="text/javascript">
+
+function guardapdf(){
+
+	var jq_html = $("#contenido").html();
+
+	var doc = new jsPDF();
+
+	var specialElementHandlers = {
+	    '#editor': function(element, renderer){
+	        return true;
+	    }
+	};
+
+	doc.fromHTML(jq_html, 15, 15, {
+	    'width': 170, 
+	    'elementHandlers': specialElementHandlers
+	});
+
+	//doc.save('Test.pdf');
+
+	var out = doc.output();
+	var url = 'data:application/pdf;base64,' + Base64.encode(out);
+	document.location.href = url;
+
+	//pdf.save('Test.pdf');
+	//var out = pdf.output();
+	//var url = 'data:application/pdf;base64,' + Base64.encode(out);
+	//document.location.href = url;
+
+}
+
+function tableToJson(table) {
+    var data = [];
+
+    // first row needs to be headers
+    var headers = [];
+    for (var i=0; i<table.rows[0].cells.length; i++) {
+        headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
+    }
+
+
+    // go through cells
+    for (var i=0; i<table.rows.length; i++) {
+
+        var tableRow = table.rows[i];
+        var rowData = {};
+
+        for (var j=0; j<tableRow.cells.length; j++) {
+
+            rowData[ headers[j] ] = tableRow.cells[j].innerHTML;
+
+        }
+
+        data.push(rowData);
+    }       
+
+    return data;
+}
+
+function imprSelec(muestra){
+	var ficha=document.getElementById(muestra);
+	var ventimp=window.open(' ','popimpr');
+	ventimp.document.write(ficha.innerHTML);
+	ventimp.document.close();
+	ventimp.print();
+	ventimp.close();
+}
+
+</script>
+
